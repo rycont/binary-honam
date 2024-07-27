@@ -17,6 +17,10 @@ export const principalStation = {
         x: 68,
         y: 100,
     },
+    목포: {
+        x: 50,
+        y: 66,
+    },
 }
 
 export async function getRainyTimes(position: Position) {
