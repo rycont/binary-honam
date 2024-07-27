@@ -1,0 +1,464 @@
+[
+  {
+    "departure": {
+      "station": "광주",
+      "time": "06:43"
+    },
+    "arrival": {
+      "station": "목포",
+      "time": "08:04"
+    },
+    "trainName": "무궁화",
+    "trainNumber": "1981",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "서대전",
+      "time": "06:13"
+    },
+    "arrival": {
+      "station": "광주",
+      "time": "08:44"
+    },
+    "trainName": "무궁화",
+    "trainNumber": "1461",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "06:25"
+    },
+    "arrival": {
+      "station": "광주",
+      "time": "11:07"
+    },
+    "trainName": "무궁화",
+    "trainNumber": "1421",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "07:34"
+    },
+    "arrival": {
+      "station": "목포",
+      "time": "12:48"
+    },
+    "trainName": "무궁화",
+    "trainNumber": "1401",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "부전",
+      "time": "06:16"
+    },
+    "arrival": {
+      "station": "목포",
+      "time": "12:59"
+    },
+    "trainName": "무궁화",
+    "trainNumber": "1951",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "08:44"
+    },
+    "arrival": {
+      "station": "광주",
+      "time": "12:45"
+    },
+    "trainName": "ITX-새마을",
+    "trainNumber": "1071",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "09:47"
+    },
+    "arrival": {
+      "station": "목포",
+      "time": "14:12"
+    },
+    "trainName": "ITX-마음",
+    "trainNumber": "1161",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "09:56"
+    },
+    "arrival": {
+      "station": "익산",
+      "time": "12:54"
+    },
+    "trainName": "ITX-마음",
+    "trainNumber": "1141",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "09:56"
+    },
+    "arrival": {
+      "station": "익산",
+      "time": "12:54"
+    },
+    "trainName": "ITX-마음",
+    "trainNumber": "9941",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "서대전",
+      "time": "12:56"
+    },
+    "arrival": {
+      "station": "광주",
+      "time": "15:33"
+    },
+    "trainName": "무궁화",
+    "trainNumber": "1463",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "12:07"
+    },
+    "arrival": {
+      "station": "목포",
+      "time": "16:56"
+    },
+    "trainName": "ITX-새마을",
+    "trainNumber": "1061",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "13:34"
+    },
+    "arrival": {
+      "station": "광주",
+      "time": "17:45"
+    },
+    "trainName": "ITX-새마을",
+    "trainNumber": "1073",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "익산",
+      "time": "16:40"
+    },
+    "arrival": {
+      "station": "목포",
+      "time": "18:47"
+    },
+    "trainName": "무궁화",
+    "trainNumber": "1473",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "15:14"
+    },
+    "arrival": {
+      "station": "광주",
+      "time": "19:29"
+    },
+    "trainName": "ITX-새마을",
+    "trainNumber": "1075",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "익산",
+      "time": "18:35"
+    },
+    "arrival": {
+      "station": "목포",
+      "time": "20:44"
+    },
+    "trainName": "무궁화",
+    "trainNumber": "1469",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "16:15"
+    },
+    "arrival": {
+      "station": "광주",
+      "time": "20:57"
+    },
+    "trainName": "무궁화",
+    "trainNumber": "1423",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "17:18"
+    },
+    "arrival": {
+      "station": "목포",
+      "time": "21:38"
+    },
+    "trainName": "ITX-마음",
+    "trainNumber": "1163",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "서대전",
+      "time": "19:35"
+    },
+    "arrival": {
+      "station": "광주",
+      "time": "21:59"
+    },
+    "trainName": "무궁화",
+    "trainNumber": "1465",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "18:10"
+    },
+    "arrival": {
+      "station": "목포",
+      "time": "23:30"
+    },
+    "trainName": "무궁화",
+    "trainNumber": "1403",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "19:11"
+    },
+    "arrival": {
+      "station": "목포",
+      "time": "23:55"
+    },
+    "trainName": "ITX-새마을",
+    "trainNumber": "1063",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "20:03"
+    },
+    "arrival": {
+      "station": "광주",
+      "time": "00:08"
+    },
+    "trainName": "ITX-새마을",
+    "trainNumber": "1077",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "21:22"
+    },
+    "arrival": {
+      "station": "익산",
+      "time": "00:38"
+    },
+    "trainName": "무궁화",
+    "trainNumber": "1443",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  }
+]

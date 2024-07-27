@@ -1,0 +1,1049 @@
+[
+    {
+        "departure": {
+            "station": "용산",
+            "time": "5:08"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "7:41"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "401",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "5:48"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "8:25"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "403",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "6:10"
+        },
+        "arrival": {
+            "station": "익산",
+            "time": "8:18"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "471",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "행신",
+            "time": "6:00"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "9:06"
+        },
+        "trainName": "KTX",
+        "trainNumber": "405",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "서울",
+            "time": "6:45"
+        },
+        "arrival": {
+            "station": "서대전",
+            "time": "8:03"
+        },
+        "trainName": "KTX",
+        "trainNumber": "473",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "7:38"
+        },
+        "arrival": {
+            "station": "광주송정",
+            "time": "9:24"
+        },
+        "trainName": "KTX",
+        "trainNumber": "441",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "행신",
+            "time": "7:18"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "10:20"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "407",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "8:20"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "10:51"
+        },
+        "trainName": "KTX",
+        "trainNumber": "409",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "9:19"
+        },
+        "arrival": {
+            "station": "광주송정",
+            "time": "11:05"
+        },
+        "trainName": "KTX",
+        "trainNumber": "411",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "9:44"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "13:31"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "475",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "서울",
+            "time": "10:32"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "13:11"
+        },
+        "trainName": "KTX",
+        "trainNumber": "413",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "행신",
+            "time": "11:47"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "14:50"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "415",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "행신",
+            "time": "12:17"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "15:13"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "417",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "13:30"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "16:01"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "9419",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "13:30"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "16:01"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "419",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "14:38"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "18:03"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "4041",
+        "runningDay": [
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "14:48"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "17:20"
+        },
+        "trainName": "KTX",
+        "trainNumber": "421",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "15:33"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "18:11"
+        },
+        "trainName": "KTX",
+        "trainNumber": "423",
+        "runningDay": [
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "16:08"
+        },
+        "arrival": {
+            "station": "광주송정",
+            "time": "17:44"
+        },
+        "trainName": "KTX-청룡",
+        "trainNumber": "425",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "16:08"
+        },
+        "arrival": {
+            "station": "광주송정",
+            "time": "17:44"
+        },
+        "trainName": "KTX",
+        "trainNumber": "491",
+        "runningDay": [
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "서울",
+            "time": "16:35"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "19:21"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "427",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "17:10"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "20:49"
+        },
+        "trainName": "KTX",
+        "trainNumber": "481",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "서울",
+            "time": "17:37"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "20:10"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "429",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "17:48"
+        },
+        "arrival": {
+            "station": "서대전",
+            "time": "18:48"
+        },
+        "trainName": "KTX",
+        "trainNumber": "483",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "18:31"
+        },
+        "arrival": {
+            "station": "광주송정",
+            "time": "20:29"
+        },
+        "trainName": "KTX",
+        "trainNumber": "431",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "서울",
+            "time": "19:29"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "22:19"
+        },
+        "trainName": "KTX",
+        "trainNumber": "433",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "20:33"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "23:09"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "435",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "21:09"
+        },
+        "arrival": {
+            "station": "익산",
+            "time": "23:13"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "485",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "21:18"
+        },
+        "arrival": {
+            "station": "목포",
+            "time": "23:46"
+        },
+        "trainName": "KTX",
+        "trainNumber": "437",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "행신",
+            "time": "21:57"
+        },
+        "arrival": {
+            "station": "광주송정",
+            "time": "0:21"
+        },
+        "trainName": "KTX",
+        "trainNumber": "439",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "5:08"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "8:10"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "501",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "행신",
+            "time": "6:41"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "10:19"
+        },
+        "trainName": "KTX",
+        "trainNumber": "503",
+        "runningDay": [
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "행신",
+            "time": "7:18"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "10:45"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "4051",
+        "runningDay": [
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "7:43"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "11:23"
+        },
+        "trainName": "KTX",
+        "trainNumber": "581",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "8:40"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "11:46"
+        },
+        "trainName": "KTX",
+        "trainNumber": "505",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "행신",
+            "time": "9:24"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "13:03"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "507",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "행신",
+            "time": "9:24"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "13:03"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "9507",
+        "runningDay": [
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "10:04"
+        },
+        "arrival": {
+            "station": "전주",
+            "time": "12:25"
+        },
+        "trainName": "KTX",
+        "trainNumber": "585",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "10:53"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "14:01"
+        },
+        "trainName": "KTX",
+        "trainNumber": "509",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "행신",
+            "time": "11:47"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "15:21"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "511",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "행신",
+            "time": "12:17"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "15:43"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "543",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "12:11"
+        },
+        "arrival": {
+            "station": "전주",
+            "time": "14:32"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "587",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "13:15"
+        },
+        "arrival": {
+            "station": "전주",
+            "time": "15:35"
+        },
+        "trainName": "KTX",
+        "trainNumber": "589",
+        "runningDay": [
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "14:10"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "17:10"
+        },
+        "trainName": "KTX",
+        "trainNumber": "513",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "14:38"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "18:28"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "583",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "14:38"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "18:30"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "593",
+        "runningDay": [
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "서울",
+            "time": "16:35"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "19:54"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "515",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "서울",
+            "time": "17:37"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "20:42"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "517",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "행신",
+            "time": "18:21"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "21:51"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "519",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "20:08"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "23:09"
+        },
+        "trainName": "KTX",
+        "trainNumber": "521",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "20:33"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "23:35"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "541",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    },
+    {
+        "departure": {
+            "station": "용산",
+            "time": "21:48"
+        },
+        "arrival": {
+            "station": "여수엑스포",
+            "time": "0:35"
+        },
+        "trainName": "KTX-산천",
+        "trainNumber": "523",
+        "runningDay": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+        ]
+    }
+]
