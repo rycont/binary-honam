@@ -146,12 +146,18 @@ function parseRunningDay(text: string) {
 const 호남선_timetable = parseTableTextWithHeaders(
     호남선_raw.text,
     호남선_raw.headers,
-).map((row) => parseTimetable(row, 호남선_raw.headers));
+).map((row) => ({
+    ...parseTimetable(row, 호남선_raw.headers),
+    mainline: "호남선",
+}));
 
 const 전라선_timetable = parseTableTextWithHeaders(
     전라선_raw.text,
     전라선_raw.headers,
-).map((row) => parseTimetable(row, 전라선_raw.headers));
+).map((row) => ({
+    ...parseTimetable(row, 전라선_raw.headers),
+    mainline: "전라선",
+}));
 
 const timetable = [
     ...호남선_timetable,

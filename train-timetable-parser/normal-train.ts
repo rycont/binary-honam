@@ -1,4 +1,4 @@
-import { parseVerticalTableTextWithHeaders } from "./utils";
+import { parseVerticalTableTextWithHeaders } from "./utils.ts";
 
 const raw_호남선 = {
     departure:
@@ -72,15 +72,21 @@ function parseTimeTable(rawDepartureData: string, rawArrivalData: string) {
 const 호남선_timetable = parseTimeTable(
     raw_호남선.departure,
     raw_호남선.arrival,
-);
+).map((train) => ({
+    ...train,
+    mainline: "호남선",
+}));
 
 const 전라선_timetable = parseTimeTable(
     raw_전라선.departure,
     raw_전라선.arrival,
-);
+).map((train) => ({
+    ...train,
+    mainline: "전라선",
+}));
 
 const 호남선_경유_전라선 = 전라선_timetable.filter((train) =>
-    train.arrival.station === "용산"
+    train.departure.station === "용산"
 );
 
 const fullTimetable = [

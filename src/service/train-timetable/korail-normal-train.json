@@ -10,6 +10,7 @@
     },
     "trainName": "무궁화",
     "trainNumber": "1981",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -31,6 +32,7 @@
     },
     "trainName": "무궁화",
     "trainNumber": "1461",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -52,6 +54,7 @@
     },
     "trainName": "무궁화",
     "trainNumber": "1421",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -73,6 +76,7 @@
     },
     "trainName": "무궁화",
     "trainNumber": "1401",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -94,6 +98,7 @@
     },
     "trainName": "무궁화",
     "trainNumber": "1951",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -115,6 +120,7 @@
     },
     "trainName": "ITX-새마을",
     "trainNumber": "1071",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -136,6 +142,7 @@
     },
     "trainName": "ITX-마음",
     "trainNumber": "1161",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -157,6 +164,7 @@
     },
     "trainName": "ITX-마음",
     "trainNumber": "1141",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -178,6 +186,7 @@
     },
     "trainName": "ITX-마음",
     "trainNumber": "9941",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -199,6 +208,7 @@
     },
     "trainName": "무궁화",
     "trainNumber": "1463",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -220,6 +230,7 @@
     },
     "trainName": "ITX-새마을",
     "trainNumber": "1061",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -241,6 +252,7 @@
     },
     "trainName": "ITX-새마을",
     "trainNumber": "1073",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -262,6 +274,7 @@
     },
     "trainName": "무궁화",
     "trainNumber": "1473",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -283,6 +296,7 @@
     },
     "trainName": "ITX-새마을",
     "trainNumber": "1075",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -304,6 +318,7 @@
     },
     "trainName": "무궁화",
     "trainNumber": "1469",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -325,6 +340,7 @@
     },
     "trainName": "무궁화",
     "trainNumber": "1423",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -346,6 +362,7 @@
     },
     "trainName": "ITX-마음",
     "trainNumber": "1163",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -367,6 +384,7 @@
     },
     "trainName": "무궁화",
     "trainNumber": "1465",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -388,6 +406,7 @@
     },
     "trainName": "무궁화",
     "trainNumber": "1403",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -409,6 +428,7 @@
     },
     "trainName": "ITX-새마을",
     "trainNumber": "1063",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -430,6 +450,7 @@
     },
     "trainName": "ITX-새마을",
     "trainNumber": "1077",
+    "mainline": "호남선",
     "runningDay": [
       1,
       2,
@@ -451,6 +472,183 @@
     },
     "trainName": "무궁화",
     "trainNumber": "1443",
+    "mainline": "호남선",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "05:44"
+    },
+    "arrival": {
+      "station": "여수엑스포",
+      "time": "11:05"
+    },
+    "trainName": "무궁화",
+    "trainNumber": "1501",
+    "mainline": "전라선",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "07:14"
+    },
+    "arrival": {
+      "station": "여수엑스포",
+      "time": "11:56"
+    },
+    "trainName": "ITX-새마을",
+    "trainNumber": "1081",
+    "mainline": "전라선",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "09:47"
+    },
+    "arrival": {
+      "station": "여수엑스포",
+      "time": "14:26"
+    },
+    "trainName": "ITX-마음",
+    "trainNumber": "1181",
+    "mainline": "전라선",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "09:38"
+    },
+    "arrival": {
+      "station": "여수엑스포",
+      "time": "15:13"
+    },
+    "trainName": "무궁화",
+    "trainNumber": "1503",
+    "mainline": "전라선",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "15:04"
+    },
+    "arrival": {
+      "station": "여수엑스포",
+      "time": "20:20"
+    },
+    "trainName": "무궁화",
+    "trainNumber": "1505",
+    "mainline": "전라선",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "16:38"
+    },
+    "arrival": {
+      "station": "여수엑스포",
+      "time": "21:22"
+    },
+    "trainName": "ITX-새마을",
+    "trainNumber": "1083",
+    "mainline": "전라선",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "17:18"
+    },
+    "arrival": {
+      "station": "여수엑스포",
+      "time": "21:43"
+    },
+    "trainName": "ITX-마음",
+    "trainNumber": "1183",
+    "mainline": "전라선",
+    "runningDay": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "departure": {
+      "station": "용산",
+      "time": "19:15"
+    },
+    "arrival": {
+      "station": "여수엑스포",
+      "time": "00:26"
+    },
+    "trainName": "무궁화",
+    "trainNumber": "1507",
+    "mainline": "전라선",
     "runningDay": [
       1,
       2,

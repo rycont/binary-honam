@@ -1,0 +1,287 @@
+[{
+    "departure": {
+        "station": "수서",
+        "time": "05:08"
+    },
+    "arrival": {
+        "station": "목포",
+        "time": "07:28"
+    },
+    "trainName": "SRT",
+    "trainNumber": "651",
+    "mainline": "호남선",
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "departure": {
+        "station": "수서",
+        "time": "05:38"
+    },
+    "arrival": {
+        "station": "광주송정",
+        "time": "07:28"
+    },
+    "trainName": "SRT",
+    "trainNumber": "601",
+    "mainline": "호남선",
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "departure": {
+        "station": "수서",
+        "time": "06:39"
+    },
+    "arrival": {
+        "station": "목포",
+        "time": "09:15"
+    },
+    "trainName": "SRT",
+    "trainNumber": "653",
+    "mainline": "호남선",
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "departure": {
+        "station": "수서",
+        "time": "07:40"
+    },
+    "arrival": {
+        "station": "광주송정",
+        "time": "09:16"
+    },
+    "trainName": "SRT",
+    "trainNumber": "603",
+    "mainline": "호남선",
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "departure": {
+        "station": "수서",
+        "time": "08:30"
+    },
+    "arrival": {
+        "station": "광주송정",
+        "time": "10:29"
+    },
+    "trainName": "SRT",
+    "trainNumber": "605",
+    "mainline": "호남선",
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "departure": {
+        "station": "수서",
+        "time": "09:39"
+    },
+    "arrival": {
+        "station": "목포",
+        "time": "12:09"
+    },
+    "trainName": "SRT",
+    "trainNumber": "655",
+    "mainline": "호남선",
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "departure": {
+        "station": "수서",
+        "time": "10:20"
+    },
+    "arrival": {
+        "station": "광주송정",
+        "time": "12:18"
+    },
+    "trainName": "SRT",
+    "trainNumber": "607",
+    "mainline": "호남선",
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "departure": {
+        "station": "수서",
+        "time": "11:00"
+    },
+    "arrival": {
+        "station": "목포",
+        "time": "13:21"
+    },
+    "trainName": "SRT",
+    "trainNumber": "657",
+    "mainline": "호남선",
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "trainNumber": "609",
+    "trainName": "SRT",
+    "mainline": "호남선",
+    "departure": {
+        "station": "수서",
+        "time": "12:20"
+    },
+    "arrival": {
+        "station": "광주송정",
+        "time": "14:03"
+    },
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "trainNumber": "659",
+    "trainName": "SRT",
+    "mainline": "호남선",
+    "departure": {
+        "station": "수서",
+        "time": "13:09"
+    },
+    "arrival": {
+        "station": "목포",
+        "time": "15:34"
+    },
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "trainNumber": "611",
+    "trainName": "SRT",
+    "mainline": "호남선",
+    "departure": {
+        "station": "수서",
+        "time": "14:09"
+    },
+    "arrival": {
+        "station": "광주송정",
+        "time": "15:57"
+    },
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "trainNumber": "613",
+    "trainName": "SRT",
+    "mainline": "호남선",
+    "departure": {
+        "station": "수서",
+        "time": "15:20"
+    },
+    "arrival": {
+        "station": "광주송정",
+        "time": "17:13"
+    },
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "trainNumber": "661",
+    "trainName": "SRT",
+    "mainline": "호남선",
+    "departure": {
+        "station": "수서",
+        "time": "16:11"
+    },
+    "arrival": {
+        "station": "목포",
+        "time": "18:34"
+    },
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "trainNumber": "663",
+    "trainName": "SRT",
+    "mainline": "호남선",
+    "departure": {
+        "station": "수서",
+        "time": "17:09"
+    },
+    "arrival": {
+        "station": "목포",
+        "time": "19:36"
+    },
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "trainNumber": "615",
+    "trainName": "SRT",
+    "mainline": "호남선",
+    "departure": {
+        "station": "수서",
+        "time": "18:05"
+    },
+    "arrival": {
+        "station": "광주송정",
+        "time": "19:54"
+    },
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "trainNumber": "665",
+    "trainName": "SRT",
+    "mainline": "호남선",
+    "departure": {
+        "station": "수서",
+        "time": "19:08"
+    },
+    "arrival": {
+        "station": "목포",
+        "time": "21:47"
+    },
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "trainNumber": "617",
+    "trainName": "SRT",
+    "mainline": "호남선",
+    "departure": {
+        "station": "수서",
+        "time": "19:40"
+    },
+    "arrival": {
+        "station": "광주송정",
+        "time": "21:28"
+    },
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "trainNumber": "667",
+    "trainName": "SRT",
+    "mainline": "호남선",
+    "departure": {
+        "station": "수서",
+        "time": "21:08"
+    },
+    "arrival": {
+        "station": "목포",
+        "time": "23:36"
+    },
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "trainNumber": "619",
+    "trainName": "SRT",
+    "mainline": "호남선",
+    "departure": {
+        "station": "수서",
+        "time": "22:20"
+    },
+    "arrival": {
+        "station": "광주송정",
+        "time": "00:06"
+    },
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "trainNumber": "621",
+    "trainName": "SRT",
+    "mainline": "호남선",
+    "departure": {
+        "station": "수서",
+        "time": "22:55"
+    },
+    "arrival": {
+        "station": "광주송정",
+        "time": "00:42"
+    },
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "trainNumber": "681",
+    "trainName": "SRT",
+    "mainline": "전라선",
+    "departure": {
+        "station": "수서",
+        "time": "10:20"
+    },
+    "arrival": {
+        "station": "여수엑스포",
+        "time": "13:35"
+    },
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}, {
+    "trainNumber": "683",
+    "trainName": "SRT",
+    "mainline": "전라선",
+    "departure": {
+        "station": "수서",
+        "time": "19:08"
+    },
+    "arrival": {
+        "station": "여수엑스포",
+        "time": "22:19"
+    },
+    "runningDay": [1, 2, 3, 4, 5, 6, 7]
+}]
