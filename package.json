@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
-    "preview": "astro preview",
+    "preview": "rm -rf ./dist && astro build && wrangler pages dev ./dist",
     "astro": "astro"
   },
   "dependencies": {
@@ -16,5 +16,8 @@
     "astro": "^4.12.2",
     "korea-public-village-forecast": "^0.2.1",
     "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "wrangler": "^3.67.1"
   }
 }

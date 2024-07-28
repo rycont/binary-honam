@@ -27,6 +27,7 @@ export async function getRainyTimes(position: Position) {
     const options = { method: 'GET' }
     const requestURL = getRequestURL(position)
 
+    console.log(requestURL)
     const response = await fetch(requestURL, options)
     const data = await response.json()
 
