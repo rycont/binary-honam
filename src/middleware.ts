@@ -1,3 +1,4 @@
+import { Temporal } from '@js-temporal/polyfill'
 import type { MiddlewareHandler } from 'astro'
 
 interface SerialResponse {
@@ -30,7 +31,7 @@ const createCacheStore = (kv?: KV) => {
 
 async function serializeResponse(
     response: Response,
-    expiresAfter: number
+    expiresAt: number
 ): Promise<SerialResponse> {
     const body = await response.text()
     const header: Record<string, string> = {}
@@ -38,8 +39,6 @@ async function serializeResponse(
     response.headers.forEach((value, key) => {
         header[key] = value
     })
-
-    const expiresAt = Date.now() + expiresAfter
 
     return { body, header, expiresAt }
 }
@@ -52,25 +51,70 @@ export const onRequest: MiddlewareHandler = async (req, next) => {
 
     if (cachedResponse) {
         const expiresAt = cachedResponse.expiresAt
+        const isExpired = expiresAt && expiresAt < Date.now()
 
-        if (expiresAt && expiresAt < Date.now()) {
-            await cache.remove(cacheKey)
+        if (!isExpired) {
+            return new Response(cachedResponse.body, {
+                headers: cachedResponse.header,
+            })
         }
 
-        return new Response(cachedResponse.body, {
-            headers: cachedResponse.header,
-        })
+        await cache.remove(cacheKey)
     }
 
     const response = await next()
 
     if (response.status === 200) {
         const cloned = response.clone()
-        const serialResponse = await serializeResponse(cloned, 1000 * 5)
+        const nextUpdateTimestamp = getNextUpdatePlan().epochMilliseconds
+
+        const serialResponse = await serializeResponse(
+            cloned,
+            nextUpdateTimestamp
+        )
         await cache.set(cacheKey, serialResponse)
     }
 
     return response
+}
+
+function getNextUpdatePlan() {
+    let nextUpdatePlan = Temporal.Now.instant().toZonedDateTimeISO('Asia/Seoul')
+
+    const currentHour = nextUpdatePlan.hour
+
+    if (currentHour < 5) {
+        return nextUpdatePlan.with({
+            hour: 5,
+            minute: 0,
+            second: 0,
+            millisecond: 0,
+            microsecond: 0,
+            nanosecond: 0,
+        })
+    }
+
+    if (currentHour < 17) {
+        return nextUpdatePlan.with({
+            hour: 17,
+            minute: 0,
+            second: 0,
+            millisecond: 0,
+            microsecond: 0,
+            nanosecond: 0,
+        })
+    }
+
+    nextUpdatePlan = nextUpdatePlan.add({ days: 1 }).with({
+        hour: 5,
+        minute: 0,
+        second: 0,
+        millisecond: 0,
+        microsecond: 0,
+        nanosecond: 0,
+    })
+
+    return nextUpdatePlan
 }
 
 interface KV {
