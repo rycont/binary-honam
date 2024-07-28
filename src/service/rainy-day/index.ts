@@ -28,29 +28,25 @@ export async function getRainyTimes(position: Position) {
     const options = { method: 'GET' }
     const requestURL = getRequestURL(position)
 
-    try {
-        const response = await fetch(requestURL, options)
-        const data = await response.json()
+    const response = await fetch(requestURL, options)
+    const data = await response.json()
 
-        const item = data.response.body.items.item as WeatherItem[]
+    const item = data.response.body.items.item as WeatherItem[]
 
-        const recordsByDate = Object.groupBy(
-            item.filter(isRainyField),
-            (item) => item.fcstDate + ' ' + item.fcstTime
-        )
+    const recordsByDate = Object.groupBy(
+        item.filter(isRainyField),
+        (item) => item.fcstDate + ' ' + item.fcstTime
+    )
 
-        const groupedRecords = new Map(
-            Object.entries(recordsByDate)
-                .map(([date, records]) => {
-                    return [date, parseGroupedRecords(records!)] as const
-                })
-                .filter(([_, data]) => data.precipitation !== '강수없음')
-        )
+    const groupedRecords = new Map(
+        Object.entries(recordsByDate)
+            .map(([date, records]) => {
+                return [date, parseGroupedRecords(records!)] as const
+            })
+            .filter(([_, data]) => data.precipitation !== '강수없음')
+    )
 
-        console.log(groupedRecords)
-    } catch (error) {
-        console.error(error)
-    }
+    return groupedRecords
 }
 
 function isRainyField(item: WeatherItem) {

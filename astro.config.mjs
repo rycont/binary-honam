@@ -11,13 +11,14 @@ export default defineConfig({
                     access: 'secret',
                     optional: false,
                 }),
+                NO_CACHE: envField.boolean({
+                    context: 'server',
+                    access: 'public',
+                    optional: true,
+                }),
             },
         },
     },
     output: 'server',
-    adapter: cloudflare({
-        platformProxy: {
-            enabled: true,
-        },
-    }),
+    adapter: cloudflare(),
 })

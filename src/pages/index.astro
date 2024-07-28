@@ -1,8 +1,18 @@
 ---
+import { getRainyTimes, PRINCIPAL_STATIONS } from '../service/rainy-day'
+
 const now = new Date().toLocaleTimeString('ko-KR', {
     timeZone: 'Asia/Seoul',
     hour12: false,
 })
+
+const rainyTimes = new Set(
+    (
+        await Promise.all(Object.values(PRINCIPAL_STATIONS).map(getRainyTimes))
+    ).flatMap((rainyTimesByStation) => [...rainyTimesByStation.keys()])
+)
+
+console.log(rainyTimes)
 ---
 
 <!doctype html>
@@ -15,5 +25,9 @@ const now = new Date().toLocaleTimeString('ko-KR', {
     </head>
     <body>
         {now}
+
+        <p>
+            {rainyTimes.size}
+        </p>
     </body>
 </html>
