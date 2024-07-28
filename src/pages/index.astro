@@ -1,21 +1,8 @@
 ---
-// import Layout from '../layouts/Layout.astro'
-// import Card from '../components/Card.astro'
-// import { getRainyTimes, PRINCIPAL_STATIONS } from '../service/rainy-day'
-
-// const rainyTimesIn광주송정 = await getRainyTimes(PRINCIPAL_STATIONS.광주송정)
-// console.log(rainyTimesIn광주송정)
-
 const now = new Date().toLocaleTimeString('ko-KR', {
     timeZone: 'Asia/Seoul',
     hour12: false,
 })
-
-// Astro.response.headers.set('Content-Type', 'text/html; charset=utf-8')
-Astro.response.headers.set(
-    'Cache-Control',
-    'public, s-maxage=60, stale-while-revalidate=30'
-)
 ---
 
 <!doctype html>
