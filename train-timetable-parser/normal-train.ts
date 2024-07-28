@@ -97,7 +97,4 @@ const fullTimetable = [
     runningDay: [1, 2, 3, 4, 5, 6, 7],
 }));
 
-await Deno.writeTextFile(
-    "../src/service/train-timetable/korail-normal-train.json",
-    JSON.stringify(fullTimetable, null, 2),
-);
+console.log(JSON.stringify(fullTimetable, null, 2))

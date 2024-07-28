@@ -164,7 +164,4 @@ const timetable = [
     ...전라선_timetable,
 ];
 
-await Deno.writeTextFile(
-    "../src/service/train-timetable/korail-express-train.json",
-    JSON.stringify(timetable, null, 4),
-);
+console.log(JSON.stringify(timetable, null, 4))
