@@ -1,4 +1,3 @@
-import { KMA_API_KEY } from 'astro:env/server'
 import type { Position, WeatherItem } from './type'
 import { Temporal } from '@js-temporal/polyfill'
 
@@ -82,7 +81,7 @@ function getRequestURL(position: Position) {
         baseDateInstance.toPlainTime().hour.toString().padStart(2, '0') + '00'
 
     const params = {
-        serviceKey: KMA_API_KEY,
+        serviceKey: import.meta.env.KMA_API_KEY,
         dataType: 'JSON',
         numOfRows: '1024',
         pageNo: '1',
