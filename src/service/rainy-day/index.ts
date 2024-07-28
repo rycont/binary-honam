@@ -1,10 +1,11 @@
 import { KMA_API_KEY } from 'astro:env/server'
 import type { Position, WeatherItem } from './type'
+import { Temporal } from '@js-temporal/polyfill'
 
 const API_BASE_URL =
     'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?'
 
-export const principalStation = {
+export const PRINCIPAL_STATIONS = {
     용산: {
         x: 60,
         y: 126,
@@ -57,29 +58,32 @@ function isRainyField(item: WeatherItem) {
 }
 
 function getRequestURL(position: Position) {
-    const baseDateInstance = new Date()
+    let baseDateInstance = Temporal.Now.zonedDateTimeISO('Asia/Seoul').with({
+        minute: 0,
+        second: 0,
+        microsecond: 0,
+        millisecond: 0,
+        nanosecond: 0,
+    })
 
-    if (baseDateInstance.getHours() < 5) {
-        baseDateInstance.setDate(baseDateInstance.getDate() - 1)
-        baseDateInstance.setHours(17)
-    } else if (baseDateInstance.getHours() < 17) {
-        baseDateInstance.setHours(5)
+    const currentHour = baseDateInstance.hour
+
+    if (currentHour < 5) {
+        baseDateInstance = baseDateInstance.add({ days: -1 })
+        baseDateInstance = baseDateInstance.with({ hour: 17 })
+    } else if (currentHour < 17) {
+        baseDateInstance = baseDateInstance.with({ hour: 5 })
     } else {
-        baseDateInstance.setHours(17)
+        baseDateInstance = baseDateInstance.with({ hour: 17 })
     }
 
-    const baseDate = `${baseDateInstance.getFullYear()}${(
-        baseDateInstance.getMonth() + 1
-    )
-        .toString()
-        .padStart(2, '0')}${baseDateInstance
-        .getDate()
-        .toString()
-        .padStart(2, '0')}`
-    const baseTime = `${baseDateInstance
-        .getHours()
-        .toString()
-        .padStart(2, '0')}00`
+    const baseDate =
+        baseDateInstance.year.toString() +
+        baseDateInstance.month.toString().padStart(2, '0') +
+        baseDateInstance.day.toString().padStart(2, '0')
+
+    const baseTime =
+        baseDateInstance.toPlainTime().hour.toString().padStart(2, '0') + '00'
 
     const params = {
         serviceKey: KMA_API_KEY,

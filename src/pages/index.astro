@@ -1,9 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro'
-import { getRainyTimes } from '../service/rainy-day'
+import { getRainyTimes, PRINCIPAL_STATIONS } from '../service/rainy-day'
 
-getRainyTimes()
+const rainyTimesIn광주송정 = await getRainyTimes(PRINCIPAL_STATIONS.광주송정)
+console.log(rainyTimesIn광주송정)
 ---
 
 <Layout title="Welcome to Astro.">
