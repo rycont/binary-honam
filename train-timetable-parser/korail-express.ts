@@ -1,7 +1,6 @@
 import {
     parseTableTextWithHeaders,
-    parseVerticalTableTextWithHeaders,
-} from "./utils.ts";
+} from "./utils";
 
 const 호남선_raw = {
     text:
@@ -110,7 +109,7 @@ const 전라선_raw = {
 
 function parseTimetable(row: Record<string, string>, headers: string[]) {
     const stops = headers.slice(2, -1);
-    const stopsWithTime = stops.map((stop, i) => ({
+    const stopsWithTime = stops.map((stop) => ({
         station: stop,
         time: row[stop],
     })).filter((stop) => stop.time !== "");

@@ -1,3 +1,7 @@
 {
-  "extends": "astro/tsconfigs/strict"
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "lib": ["ES2023", "ESNext", "DOM"],
+    "allowSyntheticDefaultImports": true
+  }
 }
