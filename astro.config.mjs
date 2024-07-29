@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config'
-import cloudflare from '@astrojs/cloudflare'
+import deno from 'npm:@astrojs/deno'
 
 // https://astro.build/config
 export default defineConfig({
     output: 'server',
-    adapter: cloudflare(),
+    adapter: deno(),
 })

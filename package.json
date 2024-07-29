@@ -3,21 +3,14 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro check && astro build",
-    "preview": "rm -rf ./dist && astro build && wrangler pages dev ./dist",
+    "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.8.3",
-    "@astrojs/cloudflare": "^11.0.1",
     "@js-temporal/polyfill": "^0.4.4",
     "astro": "^4.12.2",
-    "korea-public-village-forecast": "^0.2.1",
     "typescript": "^5.5.4"
-  },
-  "devDependencies": {
-    "wrangler": "^3.67.1"
   }
 }

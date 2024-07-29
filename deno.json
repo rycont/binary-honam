@@ -1,0 +1,6 @@
+{
+    "tasks": {
+        "dev": "deno run --allow-env --allow-read --allow-write --allow-ffi --allow-net --allow-run --allow-sys npm:astro dev",
+        "build": "deno run --allow-env --allow-read --allow-write --allow-ffi --allow-net --allow-run --allow-sys npm:astro build"
+    }
+}
