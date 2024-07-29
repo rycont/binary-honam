@@ -1,16 +1,16 @@
 /// <reference path="../.astro/env.d.ts" />
 /// <reference types="astro/client" />
 
-type KVNamespace = import("@cloudflare/workers-types").KVNamespace;
+interface ImportMetaEnv {
+    readonly KMA_API_KEY: string
+}
 
-type ENV = {
-  // replace `MY_KV` with your KV namespace
-  binaryHonamISR: KVNamespace;
-};
-
-// use a default runtime configuration (advanced mode).
-type Runtime = import("@astrojs/cloudflare").Runtime<ENV>;
-
-declare namespace App {
-  interface Locals extends Runtime {}
+interface ImportMeta {
+    /**
+     * Astro and Vite expose environment variables through `import.meta.env`. For a complete list of the environment variables available, see the two references below.
+     *
+     * - [Astro reference](https://docs.astro.build/en/guides/environment-variables/#default-environment-variables)
+     * - [Vite reference](https://vitejs.dev/guide/env-and-mode.html#env-variables)
+     */
+    readonly env: ImportMetaEnv
 }

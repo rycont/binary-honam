@@ -1,0 +1,56 @@
+---
+import { Temporal } from '@js-temporal/polyfill'
+import type { RainyTrainPlans } from '../../service/rainy-trains/type'
+
+interface Props {
+    rainyTrains: RainyTrainPlans[]
+}
+
+const today = Temporal.Now.plainDate('iso8601')
+const dates = [today, today.add({ days: 1 }), today.add({ days: 2 })]
+
+const trainPlansByDate = dates.map((date) => ({
+    date,
+    trainPlans: Astro.props.rainyTrains.filter(
+        (plan) => plan.rainyPlan.rainyTime.dayOfWeek === date.dayOfWeek
+    ),
+    dayOfWeek: date.dayOfWeek,
+}))
+
+console.log(trainPlansByDate)
+---
+
+<ul>
+    {
+        trainPlansByDate.map((trainPlan) => (
+            <li>
+                <h2>{trainPlan.date.toString()}</h2>
+                {trainPlan.trainPlans.length === 0 ? (
+                    <p>비 내리는 호남선이 없습니다</p>
+                ) : (
+                    <ul>
+                        {trainPlan.trainPlans
+                            .toSorted(
+                                (plan) =>
+                                    plan.trainPlan.departure.time.millisecond
+                            )
+                            .map((plan) => (
+                                <li>
+                                    <h3>{plan.trainPlan.trainName}</h3>
+                                    <p>{plan.trainPlan.trainNumber}</p>
+                                    <p>
+                                        {plan.trainPlan.departure.time.toString()}{' '}
+                                        ~{' '}
+                                        {plan.trainPlan.arrival.time.toString()}
+                                    </p>
+                                    <p>{plan.rainyPlan.precipitation}</p>
+                                </li>
+                            ))}
+                    </ul>
+                )}
+            </li>
+        ))
+    }
+</ul>
+
+<style></style>

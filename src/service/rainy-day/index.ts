@@ -1,4 +1,4 @@
-import type { Position, WeatherItem } from './type'
+import type { Position, RainPlan, WeatherItem } from './type'
 import { Temporal } from '@js-temporal/polyfill'
 
 const API_BASE_URL =
@@ -102,13 +102,16 @@ const shortcutToReadable: Record<string, string> = {
     PCP: 'precipitation',
 }
 
-function parseGroupedRecords(records: WeatherItem[]) {
+function parseGroupedRecords(records: WeatherItem[]): RainPlan {
     const entries = records.map((record) => [
         shortcutToReadable[record.category],
         record.fcstValue,
     ])
-    return Object.fromEntries(entries) as Record<
-        'probability' | 'precipitation',
-        string
-    >
+
+    const object = Object.fromEntries(entries)
+
+    const precipitation = object.precipitation
+    const probability = Number(object.probability)
+
+    return { precipitation, probability }
 }

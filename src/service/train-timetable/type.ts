@@ -1,6 +1,8 @@
+import type { Temporal } from '@js-temporal/polyfill'
+
 export interface StationStop {
     station: string
-    time: string
+    time: Temporal.PlainTime
 }
 
 export interface TrainPlan {

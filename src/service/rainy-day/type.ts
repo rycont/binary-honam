@@ -13,3 +13,8 @@ export interface Position {
     x: number
     y: number
 }
+
+export interface RainPlan {
+    precipitation: string
+    probability: number
+}

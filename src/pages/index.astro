@@ -1,18 +1,906 @@
 ---
-import { getRainyTimes, PRINCIPAL_STATIONS } from '../service/rainy-day'
+import { Temporal } from '@js-temporal/polyfill'
+import Introducing from '../components/introducing/index.astro'
+import TrainList from '../components/train-list/index.astro'
+
+import { getRainyTrains } from '../service/rainy-trains'
+import type { RainyTrainPlans } from '../service/rainy-trains/type'
 
 const now = new Date().toLocaleTimeString('ko-KR', {
     timeZone: 'Asia/Seoul',
     hour12: false,
 })
 
-const rainyTimes = new Set(
-    (
-        await Promise.all(Object.values(PRINCIPAL_STATIONS).map(getRainyTimes))
-    ).flatMap((rainyTimesByStation) => [...rainyTimesByStation.keys()])
-)
-
-console.log(rainyTimes)
+// const rainyTrains = await getRainyTrains()
+// console.log(JSON.stringify(rainyTrains))
+const rainyTrains: RainyTrainPlans[] = [
+    {
+        trainPlan: {
+            departure: { station: '행신', time: '06:00:00' },
+            arrival: { station: '목포', time: '09:06:00' },
+            trainName: 'KTX',
+            trainNumber: '405',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '호남선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T09:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '07:38:00' },
+            arrival: { station: '광주송정', time: '09:24:00' },
+            trainName: 'KTX',
+            trainNumber: '441',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '호남선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T09:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '행신', time: '07:18:00' },
+            arrival: { station: '목포', time: '10:20:00' },
+            trainName: 'KTX-산천',
+            trainNumber: '407',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '호남선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T09:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '08:20:00' },
+            arrival: { station: '목포', time: '10:51:00' },
+            trainName: 'KTX',
+            trainNumber: '409',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '호남선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T09:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '07:43:00' },
+            arrival: { station: '여수엑스포', time: '11:23:00' },
+            trainName: 'KTX',
+            trainNumber: '581',
+            runningDay: [1, 2, 3, 4],
+            mainline: '전라선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T09:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '08:40:00' },
+            arrival: { station: '여수엑스포', time: '11:46:00' },
+            trainName: 'KTX',
+            trainNumber: '505',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '전라선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T09:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '06:25:00' },
+            arrival: { station: '광주', time: '11:07:00' },
+            trainName: '무궁화',
+            trainNumber: '1421',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T09:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '07:34:00' },
+            arrival: { station: '목포', time: '12:48:00' },
+            trainName: '무궁화',
+            trainNumber: '1401',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T09:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '부전', time: '06:16:00' },
+            arrival: { station: '목포', time: '12:59:00' },
+            trainName: '무궁화',
+            trainNumber: '1951',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T09:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '08:44:00' },
+            arrival: { station: '광주', time: '12:45:00' },
+            trainName: 'ITX-새마을',
+            trainNumber: '1071',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T09:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '05:44:00' },
+            arrival: { station: '여수엑스포', time: '11:05:00' },
+            trainName: '무궁화',
+            trainNumber: '1501',
+            mainline: '전라선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T09:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '07:14:00' },
+            arrival: { station: '여수엑스포', time: '11:56:00' },
+            trainName: 'ITX-새마을',
+            trainNumber: '1081',
+            mainline: '전라선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T09:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '수서', time: '06:39:00' },
+            arrival: { station: '목포', time: '09:15:00' },
+            trainName: 'SRT',
+            trainNumber: '653',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T09:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '수서', time: '07:40:00' },
+            arrival: { station: '광주송정', time: '09:16:00' },
+            trainName: 'SRT',
+            trainNumber: '603',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T09:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '수서', time: '08:30:00' },
+            arrival: { station: '광주송정', time: '10:29:00' },
+            trainName: 'SRT',
+            trainNumber: '605',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T09:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '행신', time: '07:18:00' },
+            arrival: { station: '목포', time: '10:20:00' },
+            trainName: 'KTX-산천',
+            trainNumber: '407',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '호남선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '08:20:00' },
+            arrival: { station: '목포', time: '10:51:00' },
+            trainName: 'KTX',
+            trainNumber: '409',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '호남선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '09:19:00' },
+            arrival: { station: '광주송정', time: '11:05:00' },
+            trainName: 'KTX',
+            trainNumber: '411',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '호남선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '09:44:00' },
+            arrival: { station: '목포', time: '13:31:00' },
+            trainName: 'KTX-산천',
+            trainNumber: '475',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '호남선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '07:43:00' },
+            arrival: { station: '여수엑스포', time: '11:23:00' },
+            trainName: 'KTX',
+            trainNumber: '581',
+            runningDay: [1, 2, 3, 4],
+            mainline: '전라선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '08:40:00' },
+            arrival: { station: '여수엑스포', time: '11:46:00' },
+            trainName: 'KTX',
+            trainNumber: '505',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '전라선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '행신', time: '09:24:00' },
+            arrival: { station: '여수엑스포', time: '13:03:00' },
+            trainName: 'KTX-산천',
+            trainNumber: '507',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '전라선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '06:25:00' },
+            arrival: { station: '광주', time: '11:07:00' },
+            trainName: '무궁화',
+            trainNumber: '1421',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '07:34:00' },
+            arrival: { station: '목포', time: '12:48:00' },
+            trainName: '무궁화',
+            trainNumber: '1401',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '부전', time: '06:16:00' },
+            arrival: { station: '목포', time: '12:59:00' },
+            trainName: '무궁화',
+            trainNumber: '1951',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '08:44:00' },
+            arrival: { station: '광주', time: '12:45:00' },
+            trainName: 'ITX-새마을',
+            trainNumber: '1071',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '09:47:00' },
+            arrival: { station: '목포', time: '14:12:00' },
+            trainName: 'ITX-마음',
+            trainNumber: '1161',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '09:56:00' },
+            arrival: { station: '익산', time: '12:54:00' },
+            trainName: 'ITX-마음',
+            trainNumber: '1141',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '09:56:00' },
+            arrival: { station: '익산', time: '12:54:00' },
+            trainName: 'ITX-마음',
+            trainNumber: '9941',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '05:44:00' },
+            arrival: { station: '여수엑스포', time: '11:05:00' },
+            trainName: '무궁화',
+            trainNumber: '1501',
+            mainline: '전라선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '07:14:00' },
+            arrival: { station: '여수엑스포', time: '11:56:00' },
+            trainName: 'ITX-새마을',
+            trainNumber: '1081',
+            mainline: '전라선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '09:47:00' },
+            arrival: { station: '여수엑스포', time: '14:26:00' },
+            trainName: 'ITX-마음',
+            trainNumber: '1181',
+            mainline: '전라선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '09:38:00' },
+            arrival: { station: '여수엑스포', time: '15:13:00' },
+            trainName: '무궁화',
+            trainNumber: '1503',
+            mainline: '전라선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '수서', time: '08:30:00' },
+            arrival: { station: '광주송정', time: '10:29:00' },
+            trainName: 'SRT',
+            trainNumber: '605',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '수서', time: '09:39:00' },
+            arrival: { station: '목포', time: '12:09:00' },
+            trainName: 'SRT',
+            trainNumber: '655',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T10:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '09:19:00' },
+            arrival: { station: '광주송정', time: '11:05:00' },
+            trainName: 'KTX',
+            trainNumber: '411',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '호남선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '09:44:00' },
+            arrival: { station: '목포', time: '13:31:00' },
+            trainName: 'KTX-산천',
+            trainNumber: '475',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '호남선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '서울', time: '10:32:00' },
+            arrival: { station: '목포', time: '13:11:00' },
+            trainName: 'KTX',
+            trainNumber: '413',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '호남선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '07:43:00' },
+            arrival: { station: '여수엑스포', time: '11:23:00' },
+            trainName: 'KTX',
+            trainNumber: '581',
+            runningDay: [1, 2, 3, 4],
+            mainline: '전라선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '08:40:00' },
+            arrival: { station: '여수엑스포', time: '11:46:00' },
+            trainName: 'KTX',
+            trainNumber: '505',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '전라선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '행신', time: '09:24:00' },
+            arrival: { station: '여수엑스포', time: '13:03:00' },
+            trainName: 'KTX-산천',
+            trainNumber: '507',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '전라선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '10:04:00' },
+            arrival: { station: '전주', time: '12:25:00' },
+            trainName: 'KTX',
+            trainNumber: '585',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '전라선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '10:53:00' },
+            arrival: { station: '여수엑스포', time: '14:01:00' },
+            trainName: 'KTX',
+            trainNumber: '509',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+            mainline: '전라선',
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '06:25:00' },
+            arrival: { station: '광주', time: '11:07:00' },
+            trainName: '무궁화',
+            trainNumber: '1421',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '07:34:00' },
+            arrival: { station: '목포', time: '12:48:00' },
+            trainName: '무궁화',
+            trainNumber: '1401',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '부전', time: '06:16:00' },
+            arrival: { station: '목포', time: '12:59:00' },
+            trainName: '무궁화',
+            trainNumber: '1951',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '08:44:00' },
+            arrival: { station: '광주', time: '12:45:00' },
+            trainName: 'ITX-새마을',
+            trainNumber: '1071',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '09:47:00' },
+            arrival: { station: '목포', time: '14:12:00' },
+            trainName: 'ITX-마음',
+            trainNumber: '1161',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '09:56:00' },
+            arrival: { station: '익산', time: '12:54:00' },
+            trainName: 'ITX-마음',
+            trainNumber: '1141',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '09:56:00' },
+            arrival: { station: '익산', time: '12:54:00' },
+            trainName: 'ITX-마음',
+            trainNumber: '9941',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '05:44:00' },
+            arrival: { station: '여수엑스포', time: '11:05:00' },
+            trainName: '무궁화',
+            trainNumber: '1501',
+            mainline: '전라선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '07:14:00' },
+            arrival: { station: '여수엑스포', time: '11:56:00' },
+            trainName: 'ITX-새마을',
+            trainNumber: '1081',
+            mainline: '전라선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '09:47:00' },
+            arrival: { station: '여수엑스포', time: '14:26:00' },
+            trainName: 'ITX-마음',
+            trainNumber: '1181',
+            mainline: '전라선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '용산', time: '09:38:00' },
+            arrival: { station: '여수엑스포', time: '15:13:00' },
+            trainName: '무궁화',
+            trainNumber: '1503',
+            mainline: '전라선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '수서', time: '09:39:00' },
+            arrival: { station: '목포', time: '12:09:00' },
+            trainName: 'SRT',
+            trainNumber: '655',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '수서', time: '10:20:00' },
+            arrival: { station: '광주송정', time: '12:18:00' },
+            trainName: 'SRT',
+            trainNumber: '607',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            departure: { station: '수서', time: '11:00:00' },
+            arrival: { station: '목포', time: '13:21:00' },
+            trainName: 'SRT',
+            trainNumber: '657',
+            mainline: '호남선',
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+    {
+        trainPlan: {
+            trainNumber: '681',
+            trainName: 'SRT',
+            mainline: '전라선',
+            departure: { station: '수서', time: '10:20:00' },
+            arrival: { station: '여수엑스포', time: '13:35:00' },
+            runningDay: [1, 2, 3, 4, 5, 6, 7],
+        },
+        rainyPlan: {
+            precipitation: '1mm 미만',
+            probability: 60,
+            rainyTime: '2024-07-30T11:00:00',
+        },
+    },
+].map((train) => ({
+    trainPlan: {
+        ...train.trainPlan,
+        departure: {
+            ...train.trainPlan.departure,
+            time: Temporal.PlainTime.from(train.trainPlan.departure.time),
+        },
+        arrival: {
+            ...train.trainPlan.arrival,
+            time: Temporal.PlainTime.from(train.trainPlan.arrival.time),
+        },
+    },
+    rainyPlan: {
+        ...train.rainyPlan,
+        rainyTime: Temporal.PlainDateTime.from(train.rainyPlan.rainyTime),
+    },
+}))
 ---
 
 <!doctype html>
@@ -22,12 +910,39 @@ console.log(rainyTimes)
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>비 내리는 호남선</title>
+        <link
+            href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css"
+            rel="stylesheet"
+        />
     </head>
     <body>
-        {now}
-
-        <p>
-            {rainyTimes.size}
-        </p>
+        <div id="left_column">
+            <Introducing />
+        </div>
+        <TrainList rainyTrains={rainyTrains} />
+        <!-- {now} -->
     </body>
 </html>
+
+<style>
+    :root {
+        font-size: 3px;
+    }
+    body {
+        background-color: #cccccc;
+        padding: 10rem;
+        margin: 0px;
+        font-size: 4rem;
+        font-family: 'SUIT', sans-serif;
+        display: flex;
+        justify-content: stretch;
+        height: 100vh;
+        box-sizing: border-box;
+        gap: 15rem;
+    }
+    #left_column {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+    }
+</style>

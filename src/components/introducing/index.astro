@@ -1,0 +1,90 @@
+---
+import KMALogo from './assets/kma.svg'
+import KorailLogo from './assets/korail.svg'
+import SRLogo from './assets/sr.svg'
+
+const logos = [
+    {
+        src: KMALogo.src,
+        alt: '기상청 로고',
+        width: KMALogo.width,
+        height: KMALogo.height,
+    },
+    {
+        src: KorailLogo.src,
+        alt: '코레일 로고',
+        width: KorailLogo.width,
+        height: KorailLogo.height,
+    },
+    {
+        src: SRLogo.src,
+        alt: 'SR 로고',
+        width: SRLogo.width,
+        height: SRLogo.height,
+    },
+]
+---
+
+<section>
+    <h1>비 내리는 호남선</h1>
+    <p>
+        그대 살아 숨쉬는 한, <br />
+        <u>비 내리는 호남선 남행열차</u>를
+        <br />
+        탈 권리가 있습니다
+    </p>
+    <div id="data_provider">
+        <p>데이터 제공</p>
+        <ul>
+            {
+                logos.map((logo) => (
+                    <li>
+                        <img
+                            src={logo.src}
+                            alt={logo.alt}
+                            width={logo.width}
+                            height={logo.height}
+                        />
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</section>
+
+<style scoped>
+    ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        gap: 3rem;
+    }
+
+    li {
+        background: white;
+        display: flex;
+        padding: 3rem 4rem;
+        border-radius: 3rem;
+    }
+
+    p {
+        font-size: 6rem;
+        margin: 0;
+    }
+
+    section {
+        background-color: #006eff;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 12rem;
+        padding: 12rem;
+        justify-content: center;
+        flex: 1;
+        border-radius: 6rem;
+    }
+
+    h1 {
+        font-size: 12rem;
+    }
+</style>
