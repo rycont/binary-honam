@@ -1,6 +1,5 @@
 ---
 import { TrainName } from '../../service/train-timetable/type'
-import scriptPath from './script?url'
 
 const trainNameFilters = Object.entries(TrainName).map(([id, trainName]) => ({
     name: id,
@@ -41,6 +40,7 @@ const trainNameFilters = Object.entries(TrainName).map(([id, trainName]) => ({
         border-radius: 6rem;
         background-color: white;
         padding: 6rem;
+        font-size: 4rem;
     }
 
     h3:first-of-type {

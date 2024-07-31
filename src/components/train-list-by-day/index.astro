@@ -38,15 +38,6 @@ function getDateString(date: Temporal.PlainDate) {
                         (plan) => plan.trainPlan.departure.time.millisecond
                     )
                     .map((plan) => (
-                        // <li>
-                        //     <h3>{plan.trainPlan.trainName}</h3>
-                        //     <p>{plan.trainPlan.trainNumber}</p>
-                        //     <p>
-                        //         {plan.trainPlan.departure.time.toString()} ~{' '}
-                        //         {plan.trainPlan.arrival.time.toString()}
-                        //     </p>
-                        //     <p>{plan.rainyPlan.precipitation}</p>
-                        // </li>
                         <TrainPlanCard plan={plan} />
                     ))}
             </ul>
@@ -80,5 +71,11 @@ function getDateString(date: Temporal.PlainDate) {
         font-weight: unset;
         font-size: 8rem;
         margin: 0px;
+    }
+
+    @media (max-width: 900px) {
+        h2 {
+            /* font-size: 6rem; */
+        }
     }
 </style>
