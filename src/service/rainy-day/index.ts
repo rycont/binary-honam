@@ -1,3 +1,4 @@
+import { cachedFetch } from '../cached-fetch'
 import type { Position, RainPlan, WeatherItem } from './type'
 import { Temporal } from '@js-temporal/polyfill'
 
@@ -23,12 +24,11 @@ export const PRINCIPAL_STATIONS = {
     },
 }
 
-export async function getRainyTimes(position: Position) {
+export async function getRainyTimesByPosition(position: Position) {
     const options = { method: 'GET' }
     const requestURL = getRequestURL(position)
 
-    console.log(requestURL)
-    const response = await fetch(requestURL, options)
+    const response = await cachedFetch(requestURL, options)
     const data = await response.json()
 
     const item = data.response.body.items.item as WeatherItem[]

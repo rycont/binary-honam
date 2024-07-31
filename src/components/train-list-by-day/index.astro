@@ -1,0 +1,84 @@
+---
+import { Temporal } from '@js-temporal/polyfill'
+
+import type { TrainListByDay } from './type'
+import EmptyList from './empty-list.astro'
+import TrainPlanCard from '../train-plan-card/index.astro'
+
+interface Props extends TrainListByDay {}
+
+const { rainyTrainPlans, date } = Astro.props
+
+const today = Temporal.Now.plainDate('iso8601')
+
+const dateString = getDateString(date)
+
+function getDateString(date: Temporal.PlainDate) {
+    if (date.dayOfWeek === today.dayOfWeek) {
+        return '오늘'
+    }
+
+    if (date.dayOfWeek === today.add({ days: 1 }).dayOfWeek) {
+        return `내일(${date.month}월 ${date.daysInMonth}일)`
+    }
+
+    return `모레(${date.month}월 ${date.daysInMonth}일)`
+}
+---
+
+<li>
+    <h2>{dateString}</h2>
+    {
+        rainyTrainPlans.length === 0 ? (
+            <EmptyList />
+        ) : (
+            <ul>
+                {rainyTrainPlans
+                    .toSorted(
+                        (plan) => plan.trainPlan.departure.time.millisecond
+                    )
+                    .map((plan) => (
+                        // <li>
+                        //     <h3>{plan.trainPlan.trainName}</h3>
+                        //     <p>{plan.trainPlan.trainNumber}</p>
+                        //     <p>
+                        //         {plan.trainPlan.departure.time.toString()} ~{' '}
+                        //         {plan.trainPlan.arrival.time.toString()}
+                        //     </p>
+                        //     <p>{plan.rainyPlan.precipitation}</p>
+                        // </li>
+                        <TrainPlanCard plan={plan} />
+                    ))}
+            </ul>
+        )
+    }
+</li>
+
+<style scoped>
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 4rem;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(60rem, 1fr));
+    }
+
+    li {
+        background: white;
+        padding: 8rem;
+        gap: 8rem;
+        display: flex;
+        flex-direction: column;
+        border-radius: 6rem;
+        margin: 0px;
+    }
+
+    h2 {
+        font-family: var(--font-pilseung);
+        font-weight: unset;
+        font-size: 8rem;
+        margin: 0px;
+    }
+</style>

@@ -1,23 +1,12 @@
 import { Temporal } from '@js-temporal/polyfill'
-import { PRINCIPAL_STATIONS, getRainyTimes } from '../rainy-day'
+import { PRINCIPAL_STATIONS, getRainyTimesByPosition } from '../rainy-day'
 import trainTimetable from '../train-timetable'
-import type { RainyTrainPlans } from './type'
+import type { RainyTrainPlan } from './type'
 
-export async function getRainyTrains(): Promise<RainyTrainPlans[]> {
-    const rainPlans = new Map(
-        (
-            await Promise.all(
-                Object.values(PRINCIPAL_STATIONS).map(getRainyTimes)
-            )
-        ).flatMap((rainyTimesByStation) => [...rainyTimesByStation.entries()])
-    )
+export async function getRainyTrains(): Promise<RainyTrainPlan[]> {
+    const rainPlans = await getRainPlans()
 
-    const rainyTimes = [...new Set(rainPlans.keys())].map((datetime) => ({
-        raw: datetime,
-        plainDateTime: datetimeToTemporalInstance(datetime),
-    }))
-
-    const rainyTrainPlans = rainyTimes.flatMap((rainyTime) => {
+    const rainyTrainPlans = rainPlans.flatMap((rainyTime) => {
         const rainyStart = rainyTime.plainDateTime.toPlainTime()
 
         const weekdayTrainPlans = trainTimetable.getTrainPlans({
@@ -43,13 +32,13 @@ export async function getRainyTrains(): Promise<RainyTrainPlans[]> {
             .map((trainPlan) => ({
                 trainPlan,
                 rainyPlan: {
-                    ...rainPlans.get(rainyTime.raw)!,
+                    ...rainyTime.plan,
                     rainyTime: rainyTime.plainDateTime,
-                },
+                }
             }))
     })
 
-    const uniqueRainyTrainPlansMap = new Map<string, RainyTrainPlans>(
+    const uniqueRainyTrainPlansMap = new Map<string, RainyTrainPlan>(
         rainyTrainPlans.map((rainyTrainPlan) => [
             `${
                 rainyTrainPlan.trainPlan.trainNumber
@@ -59,6 +48,23 @@ export async function getRainyTrains(): Promise<RainyTrainPlans[]> {
     )
 
     return [...uniqueRainyTrainPlansMap.values()]
+}
+
+async function getRainPlans() {
+    const rainPlans = new Map(
+        (
+            await Promise.all(
+                Object.values(PRINCIPAL_STATIONS).map(getRainyTimesByPosition)
+            )
+        ).flatMap((rainyTimesByStation) => [...rainyTimesByStation.entries()])
+    )
+
+    const rainyTimes = [...new Set(rainPlans.keys())].map((datetime) => ({
+        plainDateTime: datetimeToTemporalInstance(datetime),
+        plan: rainPlans.get(datetime)!,
+    }))
+
+    return rainyTimes
 }
 
 function datetimeToTemporalInstance(datetime: string) {

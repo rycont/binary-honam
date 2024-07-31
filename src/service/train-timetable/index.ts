@@ -3,7 +3,17 @@ import korailExpress from './korail-express-train.json'
 import korailNormal from './korail-normal-train.json'
 import srt from './srt.json'
 
-import type { TrainPlan, TrainPlanQueryFilter } from './type'
+import { TrainName, type TrainPlan, type TrainPlanQueryFilter } from './type'
+
+const trainKorNameToEnumMap: Record<string, TrainName> = {
+    '무궁화': TrainName.MUGUNGHWA,
+    'ITX-마음': TrainName.ITX_MAUM,
+    'ITX-새마을': TrainName.ITX_SAEMAEUL,
+    'KTX-산천': TrainName.KTX_SANCHEON,
+    'KTX-청룡': TrainName.KTX_CHUNGRYONG,
+    'KTX': TrainName.KTX,
+    'SRT': TrainName.SRT,
+}
 
 const allTrainPlans: TrainPlan[] = [
     ...korailExpress,
@@ -19,6 +29,7 @@ const allTrainPlans: TrainPlan[] = [
         station: trainPlan.arrival.station,
         time: parsePlanTime(trainPlan.arrival.time),
     },
+    trainName: trainKorNameToEnumMap[trainPlan.trainName],
 }))
 
 const trainTimetable = {

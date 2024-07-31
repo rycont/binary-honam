@@ -1,0 +1,44 @@
+---
+import { Temporal } from '@js-temporal/polyfill'
+import TrainListByDay from '../train-list-by-day/index.astro'
+import type { RainyTrainPlan } from '../../service/rainy-trains/type'
+
+interface Props {
+    rainyTrains: RainyTrainPlan[]
+}
+
+const today = Temporal.Now.plainDate('iso8601')
+const dates = [today, today.add({ days: 1 }), today.add({ days: 2 })]
+
+const rainyTrainPlansByDate = dates.map((date) => ({
+    date,
+    rainyTrainPlans: Astro.props.rainyTrains.filter(
+        (plan) => plan.rainyPlan.rainyTime.dayOfWeek === date.dayOfWeek
+    ),
+}))
+---
+
+<ul>
+    {
+        rainyTrainPlansByDate.map((trainPlan) => (
+            <TrainListByDay
+                rainyTrainPlans={trainPlan.rainyTrainPlans}
+                date={trainPlan.date}
+            />
+        ))
+    }
+</ul>
+
+<style scoped>
+    ul {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        padding: 0;
+        gap: 5rem;
+        margin: 0;
+        flex: 1;
+        overflow: hidden scroll;
+        border-radius: 6rem;
+    }
+</style>

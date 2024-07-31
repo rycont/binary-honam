@@ -1,0 +1,26 @@
+---
+import emptyImage from './empty.svg'
+---
+
+<div>
+    <img
+        src={emptyImage.src}
+        alt="empty"
+        width={emptyImage.width}
+        height={emptyImage.height}
+    />
+    <p>비 내리는 호남선이 없어요</p>
+</div>
+
+<style scoped>
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    p {
+        font-size: 5rem;
+        color: #666;
+    }
+</style>

@@ -1,0 +1,178 @@
+---
+import type { RainyTrainPlan } from '../../service/rainy-trains/type'
+
+import mugunghwa from './train-images/무궁화.svg'
+import itxMaum from './train-images/ITX-마음.svg'
+import itxSaemaeul from './train-images/ITX-새마을.svg'
+import ktx from './train-images/KTX.svg'
+import ktxSancheon from './train-images/KTX-산천.svg'
+import ktxCheongryong from './train-images/KTX-청룡.svg'
+import srt from './train-images/SRT.svg'
+import type { Temporal } from '@js-temporal/polyfill'
+
+import raindropIcon from './icon/raindrop.svg'
+import percentIcon from './icon/percent.svg'
+
+interface Props {
+    plan: RainyTrainPlan
+}
+
+const trainImages = {
+    무궁화: mugunghwa,
+    'ITX-마음': itxMaum,
+    'ITX-새마을': itxSaemaeul,
+    KTX: ktx,
+    'KTX-산천': ktxSancheon,
+    'KTX-청룡': ktxCheongryong,
+    SRT: srt,
+}
+
+const { plan } = Astro.props
+
+const trainImage = trainImages[plan.trainPlan.trainName]
+
+const departureAt = formatTime(plan.trainPlan.departure.time)
+const arrivalAt = formatTime(plan.trainPlan.arrival.time)
+
+function formatTime(time: Temporal.PlainTime) {
+    return (
+        time.hour.toString().padStart(2, '0') +
+        ':' +
+        time.minute.toString().padStart(2, '0')
+    )
+}
+---
+
+<section>
+    <div class="header">
+        <img
+            src={trainImage.src}
+            alt={plan.trainPlan.trainName + ' 로고 이미지'}
+        />
+
+        <p class="trainnum">
+            {plan.trainPlan.trainNumber}
+        </p>
+    </div>
+
+    <div class="travel">
+        <p>
+            ◇ {plan.trainPlan.departure.station}<br />
+            → {plan.trainPlan.arrival.station}
+        </p>
+        <p class="time">
+            {departureAt}
+            <br />
+            {arrivalAt}
+        </p>
+    </div>
+
+    <div class="weather">
+        <div class="label">
+            <p>
+                <img
+                    src={raindropIcon.src}
+                    alt="강수량 아이콘"
+                    width={raindropIcon.width}
+                    height={raindropIcon.height}
+                />
+                <span>강수량</span>
+            </p>
+            <p>
+                <img
+                    src={percentIcon.src}
+                    alt="강수 확률 아이콘"
+                    width={percentIcon.width}
+                    height={percentIcon.height}
+                />
+                <span>강수 확률</span>
+            </p>
+        </div>
+        <div class="measure">
+            <p>
+                {plan.rainyPlan.precipitation}
+            </p>
+            <p>
+                {plan.rainyPlan.probability}%
+            </p>
+        </div>
+    </div>
+</section>
+
+<style scoped>
+    .header img {
+        height: 6rem;
+    }
+
+    .weather img {
+        height: 5rem;
+        width: 5rem;
+        vertical-align: middle;
+    }
+
+    .weather span {
+        vertical-align: middle;
+    }
+
+    .label,
+    .measure {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .measure {
+        align-items: flex-end;
+    }
+
+    section {
+        background-color: #f6f7fa;
+        border-radius: 3rem;
+        padding: 4rem;
+        gap: 4rem;
+        display: flex;
+        flex-direction: column;
+        min-width: 54rem;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .trainnum {
+        font-size: 4rem;
+        color: #3d3f4a;
+        font-weight: 600;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .time {
+        color: #73768a;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .travel {
+        display: flex;
+        justify-content: space-between;
+        gap: 4rem;
+        color: #292a33;
+        font-size: 4.5rem;
+        line-height: 150%;
+    }
+
+    .weather {
+        background-color: white;
+        color: #3d3f4a;
+        border-radius: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 4.5rem;
+        padding: 3rem;
+    }
+</style>
