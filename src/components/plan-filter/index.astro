@@ -1,0 +1,97 @@
+---
+import { TrainName } from '../../service/train-timetable/type'
+import scriptPath from './script?url'
+
+const trainNameFilters = Object.entries(TrainName).map(([id, trainName]) => ({
+    name: id,
+    label: trainName,
+}))
+---
+
+<section>
+    <h3>기차 종류</h3>
+    <ul>
+        {
+            trainNameFilters.map((filter) => (
+                <li>
+                    <label>
+                        <input
+                            data-filter-type="enabled-train"
+                            type="checkbox"
+                            name={filter.name}
+                            id={filter.name}
+                            checked
+                        />
+                        {filter.label}
+                    </label>
+                </li>
+            ))
+        }
+    </ul>
+
+    <h3>운행 계통</h3>
+    <label>
+        <input type="checkbox" data-filter-type="pure-honam-only" />
+        순수 호남선 계통만 보기
+    </label>
+</section>
+
+<style scoped>
+    section {
+        border-radius: 6rem;
+        background-color: white;
+        padding: 6rem;
+    }
+
+    h3:first-of-type {
+        margin-top: 0;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+</style>
+
+<style is:global>
+    body:not([data-enabled-train-mugunghwa]) [data-train-type='mugunghwa'] {
+        display: none;
+    }
+
+    body:not([data-enabled-train-itx_maum]) [data-train-type='itx_maum'] {
+        display: none;
+    }
+
+    body:not([data-enabled-train-itx_saemaeul])
+        [data-train-type='itx_saemaeul'] {
+        display: none;
+    }
+
+    body:not([data-enabled-train-ktx_sancheon])
+        [data-train-type='ktx_sancheon'] {
+        display: none;
+    }
+
+    body:not([data-enabled-train-ktx_chungryong])
+        [data-train-type='ktx_chungryong'] {
+        display: none;
+    }
+
+    body:not([data-enabled-train-ktx]) [data-train-type='ktx'] {
+        display: none;
+    }
+
+    body:not([data-enabled-train-srt]) [data-train-type='srt'] {
+        display: none;
+    }
+
+    body[data-pure-honam-only-true] [data-train-card]:not([data-pure-honam]) {
+        display: none;
+    }
+</style>
+
+<script type="module" src={scriptPath}></script>

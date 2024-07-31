@@ -1,13 +1,9 @@
 ---
 import TrainList from '../components/train-plans-viewer/index.astro'
 import Introducing from '../components/introducing/index.astro'
+import PlanFilter from '../components/plan-filter/index.astro'
 
 import { getRainyTrains } from '../service/rainy-trains'
-
-const now = new Date().toLocaleTimeString('ko-KR', {
-    timeZone: 'Asia/Seoul',
-    hour12: false,
-})
 
 const rainyTrains = await getRainyTrains()
 ---
@@ -27,6 +23,7 @@ const rainyTrains = await getRainyTrains()
     <body>
         <div id="left_column">
             <Introducing />
+            <PlanFilter />
         </div>
         <TrainList rainyTrains={rainyTrains} />
         <!-- {now} -->
@@ -62,5 +59,6 @@ const rainyTrains = await getRainyTrains()
         display: flex;
         flex-direction: column;
         gap: 5rem;
+        width: 140rem;
     }
 </style>

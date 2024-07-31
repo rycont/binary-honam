@@ -12,6 +12,7 @@ import type { Temporal } from '@js-temporal/polyfill'
 
 import raindropIcon from './icon/raindrop.svg'
 import percentIcon from './icon/percent.svg'
+import { trainNameToCodeMap } from '../../service/train-timetable/type'
 
 interface Props {
     plan: RainyTrainPlan
@@ -41,9 +42,17 @@ function formatTime(time: Temporal.PlainTime) {
         time.minute.toString().padStart(2, '0')
     )
 }
+
+const trainNameId = trainNameToCodeMap[plan.trainPlan.trainName].toLowerCase()
+const mainline = plan.trainPlan.mainline
+const isPureHonam = mainline === '호남선'
 ---
 
-<section>
+<section
+    data-train-type={trainNameId}
+    data-pure-honam={isPureHonam}
+    data-train-card
+>
     <div class="header">
         <img
             src={trainImage.src}

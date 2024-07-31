@@ -12,7 +12,13 @@ export enum TrainName {
     KTX_SANCHEON = 'KTX-산천',
     KTX_CHUNGRYONG = 'KTX-청룡',
     KTX = 'KTX',
-    SRT = 'SRT'
+    SRT = 'SRT',
+}
+
+export const trainNameToCodeMap = Object.fromEntries(
+    Object.entries(TrainName).map(([id, trainName]) => [trainName, id])
+) as {
+    [key in TrainName]: TrainName
 }
 
 export interface TrainPlan {
