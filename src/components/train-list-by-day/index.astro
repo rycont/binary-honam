@@ -9,20 +9,28 @@ interface Props extends TrainListByDay {}
 
 const { rainyTrainPlans, date } = Astro.props
 
-const today = Temporal.Now.plainDate('iso8601')
+const today = Temporal.Now.plainDateISO()
 
 const dateString = getDateString(date)
 
 function getDateString(date: Temporal.PlainDate) {
-    if (date.dayOfWeek === today.dayOfWeek) {
+    const daysDifference = date.since(today).days
+
+    const { isoMonth, isoDay } = date.getISOFields()
+
+    if (daysDifference === 0) {
         return '오늘'
     }
 
-    if (date.dayOfWeek === today.add({ days: 1 }).dayOfWeek) {
-        return `내일(${date.month}월 ${date.daysInMonth}일)`
+    if (daysDifference === 1) {
+        return `내일(${isoMonth}월 ${isoDay}일)`
     }
 
-    return `모레(${date.month}월 ${date.daysInMonth}일)`
+    if (daysDifference === 2) {
+        return `모레(${isoMonth}월 ${isoDay}일)`
+    }
+
+    return `${date.month}월 ${date.daysInMonth}일`
 }
 ---
 
