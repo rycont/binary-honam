@@ -1,54 +1,41 @@
-# Astro Starter Kit: Basics
+# 비 내리는 호남선 🚂☔
 
-```sh
-npm create astro@latest -- --template basics
-```
+> 비 내리는 호남선~ 남행열차에~   
+> 흔들리는 차창 너머로...   
+> 
+> \- 김수희, 『남행열차』
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 소개
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+![](./docs-asset/screenshot.png)
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+비가 올 때 호남선을 달리는 기차 운행 정보를 보여주는 사이트입니다. 코레일, 주식회사SR, 기상청에서 데이터를 가져옵니다.
 
-## 🚀 Project Structure
+[비 내리는 호남선 바로가기](https://binary-honam.postica.app/)
 
-Inside of your Astro project, you'll see the following folders and files:
+## 주요 기능
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+- 호남선, 호남고속선을 운행하는 호남선 / 전라선 계통 열차 정보 제공
+- 열차 종류별 필터링 (KTX, ITX, 무궁화호, SRT 등)
+- 4시간마다 기상정보 업데이트
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 기술 스택
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- Frontend: Astro (SSG)
+- Deployment: Cloudflare Pages
+- API: 기상청 단기예보 API, 코레일/SRT 운행정보 (엑셀, PDF에서 수동 파싱)
+- Automation: Cloudflare Workers (주기적 재배포)
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 개발 후기
 
-## 🧞 Commands
+1. **데이터 수집의 어려움**: 코레일과 SR의 운행 정보를 얻기 위해 엑셀 파일과 PDF를 참고하여 수동으로 데이터를 추출하였습니다.
 
-All commands are run from the root of the project, from a terminal:
+2. **기상청 좌표계의 비밀**: 기상청 API는 위도와 경도가 아닌 자체 좌표계를 사용합니다.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+3. **무궁화호 로고의 탄생**: 무궁화호 공식 로고가 없을줄은 전혀 몰랐습니다.. 그래서 인천 공항철도 로고를 변형해서 수제로 만들었습니다.
 
-## 👀 Want to learn more?
+4. **CSS로 구현한 필터링**: JavaScript를 최소화하고 싶어서 필터링 기능을 CSS로 구현했습니다. 객기를 조금 부렸습니다.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 라이센스
+
+이 프로젝트는 MIT 라이센스를 따릅니다. 자유롭게 사용, 수정, 배포하실 수 있습니다. 단, 무궁화호 로고는 MRL(Mugunghwa Redeploy License)를 따릅니다. 재사용 할 때 "무궁화호 화이팅!"만 외쳐주시면 됩니다.
