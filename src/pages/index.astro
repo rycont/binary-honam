@@ -2,6 +2,7 @@
 import TrainList from '../components/train-plans-viewer/index.astro'
 import Introducing from '../components/introducing/index.astro'
 import PlanFilter from '../components/plan-filter/index.astro'
+import Ribbon from '../components/ribbon/index.astro'
 
 import { getRainyTrains } from '../service/rainy-trains'
 
@@ -26,7 +27,11 @@ const rainyTrains = await getRainyTrains()
             <PlanFilter />
         </div>
         <TrainList rainyTrains={rainyTrains} />
-        <!-- {now} -->
+        <Ribbon />
+        <Ribbon />
+        <Ribbon />
+        <!-- <Ribbon />
+        <Ribbon /> -->
     </body>
 </html>
 

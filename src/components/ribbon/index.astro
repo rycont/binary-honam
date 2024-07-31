@@ -1,0 +1,51 @@
+<div class="positioner">
+    <div class="ribbon">
+        비내리는 호남선 남행열차에 흔들리는 차창 너머로 빗물이 흐르고 내눈물도
+        흐르고 잃어 버린 첫 사랑도 흐르네 깜빡 깜빡이는 희미한 기억속에 그대만난
+        그사람 말이없던 그사람 자꾸만 멀어지는데 만날 순 없어도 잊지는 말아요
+        당신을 사랑했어요 비내리는 호남선 남행열차에 흔들리는 차창 너머로 빗물이
+        흐르고 내눈물도 흐르고 잃어 버린 첫 사랑도 흐르네 깜빡 깜빡이는 희미한
+        기억속에 그대만난 그사람 말이없던 그사람 자꾸만 멀어지는데 만날 순
+        없어도 잊지는 말아요 당신을 사랑했어요
+    </div>
+</div>
+
+<style scoped>
+    @keyframes Marquee {
+        0% {
+            transform: translateX(-50%);
+        }
+
+        100% {
+            transform: translateX(0%);
+        }
+    }
+
+    .ribbon {
+        font-family: var(--font-pilseung);
+        color: #006fff;
+        border: solid #006fff;
+        border-width: 1rem 0rem;
+        background-color: #75ff7e;
+        width: max-content;
+        font-size: 8rem;
+        padding: 2rem;
+
+        animation: Marquee 30s linear infinite;
+    }
+
+    .positioner {
+        position: fixed;
+        overflow: visible;
+        z-index: -1;
+        transform-origin: center center;
+    }
+
+    .positioner:nth-of-type(3) {
+        transform: rotate(20deg) translateY(100vh);
+    }
+
+    .positioner:nth-of-type(2) {
+        transform: rotate(-20deg) translateX(100vw);
+    }
+</style>
