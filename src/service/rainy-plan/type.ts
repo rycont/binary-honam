@@ -1,6 +1,6 @@
 import type { Temporal } from '@js-temporal/polyfill'
 
-export interface WeatherItem {
+export interface WeatherReport {
     baseDate: string
     baseTime: string
     category: string
