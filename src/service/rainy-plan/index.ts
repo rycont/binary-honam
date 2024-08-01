@@ -8,14 +8,11 @@ import entryActions from './utils/entry-actions'
 export async function getRainyTimesByPosition(position: Position) {
     const timelogString = `Fetching rain plan for ${position.x},${position.y}`
     console.time(timelogString)
+
     const requestURL = getRequestURL(position)
+    const reports = await getKMAWeatherReportsFromURL(requestURL)
 
-    const response = await cachedFetch(requestURL)
-    const data = await response.json()
-
-    const reports = data.response.body.items.item as WeatherReport[]
     const rainyCategoryReports = reports.filter(isRainyCategory)
-
     const reportsByTime = Object.groupBy(rainyCategoryReports, createTimeKey)
 
     const mergedRecords = new Map(
@@ -26,6 +23,13 @@ export async function getRainyTimesByPosition(position: Position) {
 
     console.timeEnd(timelogString)
     return mergedRecords
+}
+
+async function getKMAWeatherReportsFromURL(url: string) {
+    const response = await cachedFetch(url)
+    const data = await response.json()
+
+    return data.response.body.items.item as WeatherReport[]
 }
 
 function createTimeKey(record: WeatherReport) {
