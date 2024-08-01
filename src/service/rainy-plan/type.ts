@@ -1,3 +1,5 @@
+import type { Temporal } from '@js-temporal/polyfill'
+
 export interface WeatherItem {
     baseDate: string
     baseTime: string
@@ -15,6 +17,10 @@ export interface Position {
 }
 
 export interface RainPlan {
-    precipitation: string
+    precipitation: number
     probability: number
+}
+
+export interface RainPlanWithTime extends RainPlan {
+    startsAt: Temporal.PlainDateTime
 }

@@ -21,4 +21,4 @@ export function cachedFetch(
 setInterval(() => {
     cache.clear()
     console.log('Cache cleared')
-}, 1000 * 60)
+}, 1000 * 60 * 3)

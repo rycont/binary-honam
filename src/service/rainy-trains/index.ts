@@ -1,48 +1,24 @@
 import { Temporal } from '@js-temporal/polyfill'
-import { PRINCIPAL_STATIONS, getRainyTimesByPosition } from '../rainy-day'
 import trainTimetable from '../train-timetable'
-import type { RainyTrainPlan } from './type'
+import type { RainyTrain } from './type'
+import getRainPlansByPositions from '../rainy-plan/get-rain-plan-by-position'
+import PRINCIPAL_STATIONS from './principal-stations'
+import type { TrainPlan } from '../train-timetable/type'
+import type { RainPlanWithTime } from '../rainy-plan/type'
 
-export async function getRainyTrains(): Promise<RainyTrainPlan[]> {
-    const rainPlans = await getRainPlans()
+export async function getRainyTrains(): Promise<RainyTrain[]> {
+    const rainPlansInPrincipalStations = await getRainPlansByPositions([
+        ...PRINCIPAL_STATIONS.values(),
+    ])
 
-    const rainyTrainPlans = rainPlans.flatMap((rainyTime) => {
-        const rainyStart = rainyTime.plainDateTime.toPlainTime()
+    const rainyTrainPlans =
+        rainPlansInPrincipalStations.flatMap(getTrainsByRainyTime)
 
-        const weekdayTrainPlans = trainTimetable.getTrainPlans({
-            day: rainyTime.plainDateTime.dayOfWeek,
-        })
-
-        return weekdayTrainPlans
-            .filter((trainPlan) => {
-                const departureAt = trainPlan.departure.time
-                const arrivalAt = trainPlan.arrival.time
-
-                const rainBeginsAfterDeparture =
-                    Temporal.PlainTime.compare(departureAt, rainyStart) <= 0
-
-                const rainBeginsBeforeArrival =
-                    Temporal.PlainTime.compare(rainyStart, arrivalAt) <= 0
-
-                const rainBeginsBetweenDepartureAndArrival =
-                    rainBeginsAfterDeparture && rainBeginsBeforeArrival
-
-                return rainBeginsBetweenDepartureAndArrival
-            })
-            .map((trainPlan) => ({
-                trainPlan,
-                rainyPlan: {
-                    ...rainyTime.plan,
-                    rainyTime: rainyTime.plainDateTime,
-                }
-            }))
-    })
-
-    const uniqueRainyTrainPlansMap = new Map<string, RainyTrainPlan>(
+    const uniqueRainyTrainPlansMap = new Map<string, RainyTrain>(
         rainyTrainPlans.map((rainyTrainPlan) => [
             `${
                 rainyTrainPlan.trainPlan.trainNumber
-            }-${rainyTrainPlan.rainyPlan.rainyTime.toString()}`,
+            }-${rainyTrainPlan.rainyPlan.startsAt.toString()}`,
             rainyTrainPlan,
         ])
     )
@@ -50,38 +26,31 @@ export async function getRainyTrains(): Promise<RainyTrainPlan[]> {
     return [...uniqueRainyTrainPlansMap.values()]
 }
 
-async function getRainPlans() {
-    const rainPlans = new Map(
-        (
-            await Promise.all(
-                Object.values(PRINCIPAL_STATIONS).map(getRainyTimesByPosition)
-            )
-        ).flatMap((rainyTimesByStation) => [...rainyTimesByStation.entries()])
-    )
+function getTrainsByRainyTime(rainyPlan: RainPlanWithTime) {
+    const rainyStart = rainyPlan.startsAt.toPlainTime()
 
-    const rainyTimes = [...new Set(rainPlans.keys())].map((datetime) => ({
-        plainDateTime: datetimeToTemporalInstance(datetime),
-        plan: rainPlans.get(datetime)!,
-    }))
-
-    return rainyTimes
-}
-
-function datetimeToTemporalInstance(datetime: string) {
-    const year = datetime.slice(0, 4)
-    const month = datetime.slice(4, 6)
-    const day = datetime.slice(6, 8)
-
-    const hour = datetime.slice(9, 11)
-    const minute = datetime.slice(11, 13)
-
-    const temporalInstance = Temporal.PlainDateTime.from({
-        year: Number(year),
-        month: Number(month),
-        day: Number(day),
-        hour: Number(hour),
-        minute: Number(minute),
+    const weekdayTrainPlans = trainTimetable.getTrainPlans({
+        day: rainyPlan.startsAt.dayOfWeek,
     })
 
-    return temporalInstance
+    return weekdayTrainPlans
+        .filter(figureIsRainyTrain(rainyStart))
+        .map((trainPlan) => ({
+            trainPlan,
+            rainyPlan,
+        }))
 }
+
+const figureIsRainyTrain =
+    (rainyStart: Temporal.PlainTime) => (trainPlan: TrainPlan) => {
+        const departureAt = trainPlan.departure.time
+        const arrivalAt = trainPlan.arrival.time
+
+        const rainBeginsAfterDeparture =
+            Temporal.PlainTime.compare(departureAt, rainyStart) <= 0
+
+        const rainBeginsBeforeArrival =
+            Temporal.PlainTime.compare(rainyStart, arrivalAt) <= 0
+
+        return rainBeginsAfterDeparture && rainBeginsBeforeArrival
+    }

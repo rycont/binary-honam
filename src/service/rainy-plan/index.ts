@@ -5,25 +5,6 @@ import { Temporal } from '@js-temporal/polyfill'
 const API_BASE_URL =
     'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?'
 
-export const PRINCIPAL_STATIONS = {
-    용산: {
-        x: 60,
-        y: 126,
-    },
-    광주송정: {
-        x: 57,
-        y: 74,
-    },
-    서대전: {
-        x: 68,
-        y: 100,
-    },
-    목포: {
-        x: 50,
-        y: 66,
-    },
-}
-
 export async function getRainyTimesByPosition(position: Position) {
     const options = { method: 'GET' }
     const requestURL = getRequestURL(position)
@@ -43,7 +24,7 @@ export async function getRainyTimesByPosition(position: Position) {
             .map(([date, records]) => {
                 return [date, parseGroupedRecords(records!)] as const
             })
-            .filter(([_, data]) => data.precipitation !== '강수없음')
+            .filter(([_, data]) => data.precipitation)
     )
 
     return groupedRecords
@@ -108,10 +89,18 @@ function parseGroupedRecords(records: WeatherItem[]): RainPlan {
         record.fcstValue,
     ])
 
-    const object = Object.fromEntries(entries)
+    const mergedRecord = Object.fromEntries(entries)
 
-    const precipitation = object.precipitation
-    const probability = Number(object.probability)
+    const precipitation = parsePrecipitation(mergedRecord.precipitation)
+    const probability = parseInt(mergedRecord.probability, 10)
 
     return { precipitation, probability }
+}
+
+function parsePrecipitation(precipitation: string) {
+    if (precipitation === '강수없음') {
+        return 0
+    }
+
+    return parseInt(precipitation.split(' ')[0].replace('mm', ''), 10)
 }
