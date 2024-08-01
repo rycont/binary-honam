@@ -1,21 +1,15 @@
 ---
-import { Temporal } from '@js-temporal/polyfill'
 import TrainListByDay from '../train-list-by-day/index.astro'
-import type { RainyTrainPlan } from '../../service/rainy-trains/type'
+import type { RainyTrain } from '../../service/rainy-trains/type'
+
+import groupRainyTrainPlansByDate from './group-rainy-train-plans-by-date'
 
 interface Props {
-    rainyTrains: RainyTrainPlan[]
+    rainyTrains: RainyTrain[]
 }
 
-const today = Temporal.Now.plainDate('iso8601')
-const dates = [today, today.add({ days: 1 }), today.add({ days: 2 })]
-
-const rainyTrainPlansByDate = dates.map((date) => ({
-    date,
-    rainyTrainPlans: Astro.props.rainyTrains.filter(
-        (plan) => plan.rainyPlan.rainyTime.dayOfWeek === date.dayOfWeek
-    ),
-}))
+const { rainyTrains } = Astro.props
+const rainyTrainPlansByDate = groupRainyTrainPlansByDate(rainyTrains)
 ---
 
 <ul>
