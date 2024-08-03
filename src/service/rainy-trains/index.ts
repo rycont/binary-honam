@@ -18,7 +18,7 @@ export async function getRainyTrains(): Promise<RainyTrain[]> {
         rainyTrainPlans.map((rainyTrainPlan) => [
             `${
                 rainyTrainPlan.trainPlan.trainNumber
-            }-${rainyTrainPlan.rainyPlan.startsAt.toString()}`,
+            }-${rainyTrainPlan.rainyPlan.startsAt.toPlainDate().toString()}`,
             rainyTrainPlan,
         ])
     )

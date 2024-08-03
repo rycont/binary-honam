@@ -1,5 +1,5 @@
 ---
-import type { Temporal } from '@js-temporal/polyfill'
+import { Temporal } from '@js-temporal/polyfill'
 
 import type { RainyTrain } from '../../service/rainy-trains/type'
 
@@ -14,17 +14,24 @@ interface Props {
 }
 
 const { rainyTrainPlans, date } = Astro.props
+
+const sortedRainyTrains = rainyTrainPlans.toSorted((a, b) =>
+    Temporal.PlainTime.compare(
+        a.trainPlan.departure.time,
+        b.trainPlan.departure.time
+    )
+)
 const dateString = getDateString(date)
 ---
 
 <li>
     <h2>{dateString}</h2>
     {
-        rainyTrainPlans.length === 0 ? (
+        sortedRainyTrains.length === 0 ? (
             <EmptyList />
         ) : (
             <ul>
-                {rainyTrainPlans.map((plan) => (
+                {sortedRainyTrains.map((plan) => (
                     <TrainPlanCard plan={plan} />
                 ))}
             </ul>
