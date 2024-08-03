@@ -19,5 +19,5 @@ export default function getDateString(date: Temporal.PlainDate) {
         return `모레(${isoMonth}월 ${isoDay}일)`
     }
 
-    return `${date.month}월 ${date.daysInMonth}일`
+    return `${isoMonth}월 ${isoDay}일`
 }
