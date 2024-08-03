@@ -1,78 +1,44 @@
 ---
-import type { RainyTrainPlan } from '../../service/rainy-trains/type'
-
-import mugunghwa from './train-images/무궁화.svg'
-import itxMaum from './train-images/ITX-마음.svg'
-import itxSaemaeul from './train-images/ITX-새마을.svg'
-import ktx from './train-images/KTX.svg'
-import ktxSancheon from './train-images/KTX-산천.svg'
-import ktxCheongryong from './train-images/KTX-청룡.svg'
-import srt from './train-images/SRT.svg'
-import type { Temporal } from '@js-temporal/polyfill'
+import type { RainyTrain } from '../../service/rainy-trains/type'
 
 import raindropIcon from './icon/raindrop.svg'
 import percentIcon from './icon/percent.svg'
-import { trainNameToCodeMap } from '../../service/train-timetable/type'
+import getCardData from './get-card-data'
 
 interface Props {
-    plan: RainyTrainPlan
-}
-
-const trainImages = {
-    무궁화: mugunghwa,
-    'ITX-마음': itxMaum,
-    'ITX-새마을': itxSaemaeul,
-    KTX: ktx,
-    'KTX-산천': ktxSancheon,
-    'KTX-청룡': ktxCheongryong,
-    SRT: srt,
+    plan: RainyTrain
 }
 
 const { plan } = Astro.props
 
-const trainImage = trainImages[plan.trainPlan.trainName]
-
-const departureAt = formatTime(plan.trainPlan.departure.time)
-const arrivalAt = formatTime(plan.trainPlan.arrival.time)
-
-function formatTime(time: Temporal.PlainTime) {
-    return (
-        time.hour.toString().padStart(2, '0') +
-        ':' +
-        time.minute.toString().padStart(2, '0')
-    )
-}
-
-const trainNameId = trainNameToCodeMap[plan.trainPlan.trainName].toLowerCase()
-const mainline = plan.trainPlan.mainline
-const isPureHonam = mainline === '호남선'
+const cardData = getCardData(plan.trainPlan)
 ---
 
 <section
-    data-train-type={trainNameId}
-    data-pure-honam={isPureHonam}
+    data-train-type={cardData.train.code}
+    data-pure-honam={cardData.plan.isPureHonam}
     data-train-card
 >
     <div class="header">
         <img
-            src={trainImage.src}
-            alt={plan.trainPlan.trainName + ' 로고 이미지'}
+            src={cardData.train.image}
+            alt={cardData.train.name + ' 로고 이미지'}
         />
 
         <p class="trainnum">
-            {plan.trainPlan.trainNumber}
+            {cardData.plan.number}
         </p>
     </div>
 
     <div class="travel">
         <p>
-            ◇ {plan.trainPlan.departure.station}<br />
-            → {plan.trainPlan.arrival.station}
+            ◇ {cardData.plan.departure.station}<br />
+            → {cardData.plan.arrival.station}
         </p>
         <p class="time">
-            {departureAt}
+            {cardData.plan.departure.time}
             <br />
-            {arrivalAt}
+            {cardData.plan.arrival.time}
         </p>
     </div>
 
@@ -99,7 +65,7 @@ const isPureHonam = mainline === '호남선'
         </div>
         <div class="measure">
             <p>
-                {plan.rainyPlan.precipitation}
+                {plan.rainyPlan.precipitation} mm
             </p>
             <p>
                 {plan.rainyPlan.probability}%

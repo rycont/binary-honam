@@ -1,37 +1,20 @@
 ---
-import { Temporal } from '@js-temporal/polyfill'
+import type { Temporal } from '@js-temporal/polyfill'
 
-import type { TrainListByDay } from './type'
-import EmptyList from './empty-list.astro'
+import type { RainyTrain } from '../../service/rainy-trains/type'
+
 import TrainPlanCard from '../train-plan-card/index.astro'
+import EmptyList from './empty-list.astro'
 
-interface Props extends TrainListByDay {}
+import getDateString from './get-date-string'
+
+interface Props {
+    date: Temporal.PlainDate
+    rainyTrainPlans: RainyTrain[]
+}
 
 const { rainyTrainPlans, date } = Astro.props
-
-const today = Temporal.Now.plainDateISO()
-
 const dateString = getDateString(date)
-
-function getDateString(date: Temporal.PlainDate) {
-    const daysDifference = date.since(today).days
-
-    const { isoMonth, isoDay } = date.getISOFields()
-
-    if (daysDifference === 0) {
-        return '오늘'
-    }
-
-    if (daysDifference === 1) {
-        return `내일(${isoMonth}월 ${isoDay}일)`
-    }
-
-    if (daysDifference === 2) {
-        return `모레(${isoMonth}월 ${isoDay}일)`
-    }
-
-    return `${date.month}월 ${date.daysInMonth}일`
-}
 ---
 
 <li>
@@ -41,13 +24,9 @@ function getDateString(date: Temporal.PlainDate) {
             <EmptyList />
         ) : (
             <ul>
-                {rainyTrainPlans
-                    .toSorted(
-                        (plan) => plan.trainPlan.departure.time.millisecond
-                    )
-                    .map((plan) => (
-                        <TrainPlanCard plan={plan} />
-                    ))}
+                {rainyTrainPlans.map((plan) => (
+                    <TrainPlanCard plan={plan} />
+                ))}
             </ul>
         )
     }
